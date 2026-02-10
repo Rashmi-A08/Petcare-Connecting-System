@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Diagnosis - PetCare Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        dark: '#2D3436',
+                        light: '#F7FFF7',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-gray-50 text-dark font-sans">
+
+    <!-- Navigation (Same as Home) -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+                    onclick="window.location.href='index.html'">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-tr from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        P</div>
+                    <span class="font-bold text-2xl tracking-tighter text-gray-800">PetCare<span
+                            class="text-primary">Connect</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="ai-diagnosis.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-white bg-primary transition-colors shadow-md">AI
+                            Diagnosis</a>
+                        <a href="history.html"
+                            class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Medical
+                            History</a>
+                        <a href="consultation.html"
+                            class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Expert
+                            Consult</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI Symptom
+                    Checker</span>
+            </h1>
+            <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                Advanced AI analysis for immediate insights. Check your pet's symptoms in seconds.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+            <!-- Input Section -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="bg-gray-50 p-6 border-b border-gray-100">
+                    <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        Input Data
+                    </h2>
+                </div>
+                <div class="p-8">
+                    <form id="ai-form">
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Pet Type</label>
+                            <div class="flex gap-4">
+                                <label
+                                    class="cursor-pointer border-2 border-primary bg-primary/5 rounded-xl p-4 flex-1 text-center hover:bg-primary/10 transition-colors">
+                                    <input type="radio" name="pet-type" class="hidden" checked>
+                                    <span class="text-xl">🐕 Dog</span>
+                                </label>
+                                <label
+                                    class="cursor-pointer border-2 border-gray-200 rounded-xl p-4 flex-1 text-center hover:border-gray-300 transition-colors">
+                                    <input type="radio" name="pet-type" class="hidden">
+                                    <span class="text-xl">🐈 Cat</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Describe Symptoms</label>
+                            <textarea
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+                                rows="4" placeholder="e.g. Lethargic, not eating, coughing..."></textarea>
+                        </div>
+
+                        <div class="mb-8">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Upload Photo (Optional)</label>
+                            <div
+                                class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary cursor-pointer transition-colors bg-gray-50 group">
+                                <svg class="w-12 h-12 text-gray-400 mx-auto mb-2 group-hover:text-primary transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <p class="text-gray-500 text-sm">Drag and drop or click to upload</p>
+                            </div>
+                        </div>
+
+                        <button id="analyze-btn"
+                            class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex justify-center items-center gap-2">
+                            <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            Analyze Symptoms
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div class="relative">
+                <!-- Loading State (Hidden by default) -->
+                <div id="ai-loading"
+                    class="hidden absolute inset-0 bg-white/80 backdrop-blur-md rounded-2xl z-20 flex flex-col items-center justify-center p-8 text-center border border-gray-200 shadow-xl h-96">
+                    <div class="w-20 h-20 border-4 border-gray-200 border-t-primary rounded-full animate-spin mb-6">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Processing Data...</h3>
+                    <p class="text-gray-500 mt-2">AI is analyzing patterns...</p>
+                    <div class="w-full max-w-xs bg-gray-200 rounded-full h-2.5 mt-6 overflow-hidden">
+                        <div class="bg-primary h-2.5 rounded-full animate-pulse w-3/4"></div>
+                    </div>
+                </div>
+
+                <!-- Results (Hidden by default) -->
+                <div id="results-section"
+                    class="hidden bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 animate-fade-in-up">
+                    <div class="bg-gradient-to-r from-green-500 to-emerald-500 p-6 text-white">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-bold flex items-center gap-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                Analysis Complete
+                            </h2>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">Confidence: 94%</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-8">
+                            <h3 class="text-gray-500 text-sm font-uppercase tracking-wider font-semibold mb-2">POTENTIAL
+                                CONDITION</h3>
+                            <p class="text-3xl font-bold text-gray-900">Mild Upper Respiratory Infection</p>
+                            <p class="text-gray-600 mt-2">Based on the coughing and lethargy reported, it is likely a
+                                mild infection commonly known as Kennel Cough.</p>
+                        </div>
+
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-yellow-700">
+                                        Monitor for 24 hours. If symptoms persist or worsen (e.g., loss of appetite,
+                                        fever), consult a vet immediately.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-gray-900 font-bold mb-4">Recommended Actions</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <div
+                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs">
+                                        1</div>
+                                    <span class="text-gray-700">Ensure plenty of fresh water availability.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div
+                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs">
+                                        2</div>
+                                    <span class="text-gray-700">Keep your pet in a warm, humid environment (bathroom
+                                        with shower steam helps).</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div
+                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs">
+                                        3</div>
+                                    <span class="text-gray-700">Isolate from other pets to prevent spread.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Not medical advice. AI simulation.</span>
+                            <a href="consultation.html" class="text-primary font-bold hover:underline">Talk to a Real
+                                Vet &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Initial Empty State -->
+                <div id="initial-state"
+                    class="bg-blue-50 rounded-2xl p-8 text-center border border-blue-100 h-64 flex flex-col items-center justify-center">
+                    <svg class="w-16 h-16 text-blue-200 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                        </path>
+                    </svg>
+                    <p class="text-blue-800 font-medium">Waiting for input...</p>
+                    <p class="text-blue-500 text-sm mt-1">Fill out the form to start analysis</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

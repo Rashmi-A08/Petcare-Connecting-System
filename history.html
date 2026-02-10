@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical History - PetCare Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        dark: '#2D3436',
+                        light: '#F7FFF7',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background: #e5e7eb;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-dark font-sans">
+
+    <nav class="bg-white shadow-sm fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+                    onclick="window.location.href='index.html'">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-tr from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        P</div>
+                    <span class="font-bold text-2xl tracking-tighter text-gray-800">PetCare<span
+                            class="text-primary">Connect</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="ai-diagnosis.html"
+                            class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">AI
+                            Diagnosis</a>
+                        <a href="history.html"
+                            class="px-3 py-2 rounded-md text-sm font-medium text-white bg-secondary transition-colors shadow-md">Medical
+                            History</a>
+                        <a href="consultation.html"
+                            class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Expert
+                            Consult</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Profile Header -->
+        <div
+            class="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100 flex flex-col md:flex-row items-center gap-6">
+            <div class="relative">
+                <div class="w-24 h-24 rounded-full bg-gray-200 overflow-hidden border-4 border-white shadow-md">
+                    <img src="https://images.unsplash.com/photo-1517423568366-69f98520d7ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+                        alt="Pet Profile" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
+            </div>
+            <div class="text-center md:text-left flex-1">
+                <h1 class="text-2xl font-bold text-gray-900">Bella (Golden Retriever)</h1>
+                <p class="text-gray-500">ID: #PET-8829 | 3 Years Old | Female</p>
+                <div class="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Regular Checkup
+                        Due</span>
+                    <span
+                        class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Vaccinated</span>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button
+                    class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition">Update
+                    Info</button>
+                <button
+                    class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-red-600 shadow-md transition">Emergency</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Left Column: Timeline -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 h-full">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Medical Timeline
+                    </h2>
+
+                    <div class="timeline-line relative pl-4 space-y-8">
+                        <!-- Item 1 -->
+                        <div class="relative z-10 pl-8">
+                            <div
+                                class="absolute left-0 top-1 w-10 h-10 bg-white border-2 border-secondary rounded-full flex items-center justify-center shadow-sm">
+                                <span class="text-xs font-bold text-secondary">NOV</span>
+                            </div>
+                            <div
+                                class="bg-gray-50 p-4 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                                <span class="text-xs text-gray-400 font-semibold uppercase">Nov 12, 2025</span>
+                                <h3 class="text-lg font-bold text-gray-800">Annual Vaccination</h3>
+                                <p class="text-gray-600 mt-1">Administered Rabies and DHPP booster shots. No adverse
+                                    reactions observed.</p>
+                                <div class="mt-3 flex gap-2">
+                                    <span
+                                        class="text-xs bg-white border border-gray-200 px-2 py-1 rounded text-gray-500">Dr.
+                                        Sarah Smith</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="relative z-10 pl-8">
+                            <div
+                                class="absolute left-0 top-1 w-10 h-10 bg-white border-2 border-primary rounded-full flex items-center justify-center shadow-sm">
+                                <span class="text-xs font-bold text-primary">SEP</span>
+                            </div>
+                            <div
+                                class="bg-gray-50 p-4 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                                <span class="text-xs text-gray-400 font-semibold uppercase">Sep 05, 2025</span>
+                                <h3 class="text-lg font-bold text-gray-800">Digestive Issue Consult</h3>
+                                <p class="text-gray-600 mt-1">Presented with vomiting. Prescribed probiotics and bland
+                                    diet for 4 days.</p>
+                                <div class="mt-3 flex gap-2">
+                                    <span
+                                        class="text-xs bg-white border border-gray-200 px-2 py-1 rounded text-gray-500">Dr.
+                                        J. Doe</span>
+                                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">Prescription
+                                        #8821</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="relative z-10 pl-8">
+                            <div
+                                class="absolute left-0 top-1 w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center shadow-sm">
+                                <span class="text-xs font-bold text-gray-400">JUN</span>
+                            </div>
+                            <div
+                                class="bg-gray-50 p-4 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                                <span class="text-xs text-gray-400 font-semibold uppercase">Jun 20, 2025</span>
+                                <h3 class="text-lg font-bold text-gray-800">Routine Dental Cleaning</h3>
+                                <p class="text-gray-600 mt-1">Teeth scaled and polished. Mild gingivitis noted on upper
+                                    molars.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Stats -->
+            <div class="space-y-8">
+                <!-- Weight Chart -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                    <h2 class="text-lg font-bold text-gray-900 mb-4">Weight Tracking</h2>
+                    <div
+                        class="flex items-end justify-between h-40 gap-2 overflow-hidden pb-2 border-b border-gray-200">
+                        <div class="flex flex-col items-center gap-1 w-1/5 group">
+                            <div class="w-full bg-secondary/30 rounded-t-lg transition-all duration-1000 ease-out hover:bg-secondary relative"
+                                style="height: 60%">
+                                <span
+                                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">28kg</span>
+                            </div>
+                            <span class="text-xs text-gray-500">Aug</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 w-1/5 group">
+                            <div class="w-full bg-secondary/40 rounded-t-lg transition-all duration-1000 ease-out hover:bg-secondary relative"
+                                style="height: 62%">
+                                <span
+                                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">29kg</span>
+                            </div>
+                            <span class="text-xs text-gray-500">Sep</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 w-1/5 group">
+                            <div class="w-full bg-secondary/50 rounded-t-lg transition-all duration-1000 ease-out hover:bg-secondary relative"
+                                style="height: 65%">
+                                <span
+                                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">30kg</span>
+                            </div>
+                            <span class="text-xs text-gray-500">Oct</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 w-1/5 group">
+                            <div class="w-full bg-secondary/80 rounded-t-lg transition-all duration-1000 ease-out hover:bg-secondary relative"
+                                style="height: 64%">
+                                <span
+                                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">29.5kg</span>
+                            </div>
+                            <span class="text-xs text-gray-500">Nov</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 w-1/5 group">
+                            <div class="w-full bg-primary rounded-t-lg transition-all duration-1000 ease-out relative"
+                                style="height: 66%">
+                                <span
+                                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-primary">30.2kg</span>
+                            </div>
+                            <span class="text-xs font-bold text-primary">Dec</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Appointments -->
+                <div class="bg-gradient-to-br from-dark to-gray-800 rounded-2xl shadow-lg p-6 text-white">
+                    <h2 class="text-lg font-bold mb-4">Upcoming Due</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                            <div
+                                class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                                15
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Heartworm Prevention</h4>
+                                <p class="text-xs text-gray-400">Recurring - Monthly</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                            <div
+                                class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold">
+                                22
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Grooming Session</h4>
+                                <p class="text-xs text-gray-400">PetSalon Downtown</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-full mt-6 py-2 bg-white text-dark font-bold rounded-lg text-sm hover:bg-gray-100 transition">Set
+                        Reminder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
